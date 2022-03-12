@@ -1,0 +1,1 @@
+../../../../.symlinks/plugins/flutter_sound/ios/Classes/FlutterSoundManager.h

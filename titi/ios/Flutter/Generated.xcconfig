@@ -1,0 +1,14 @@
+// This is a generated file; do not edit or check into version control.
+FLUTTER_ROOT=/Volumes/mac-J/larpoux/flutter
+FLUTTER_APPLICATION_PATH=/Volumes/mac-J/larpoux/projmac/toto/titi
+COCOAPODS_PARALLEL_CODE_SIGN=true
+FLUTTER_TARGET=/Volumes/mac-J/larpoux/projmac/toto/titi/lib/main.dart
+FLUTTER_BUILD_DIR=build
+FLUTTER_BUILD_NAME=9.1.6
+FLUTTER_BUILD_NUMBER=9.1.6
+EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
+DART_DEFINES=Zmx1dHRlci5pbnNwZWN0b3Iuc3RydWN0dXJlZEVycm9ycz10cnVl,RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==
+DART_OBFUSCATION=false
+TRACK_WIDGET_CREATION=true
+TREE_SHAKE_ICONS=false
+PACKAGE_CONFIG=/Volumes/mac-J/larpoux/projmac/toto/titi/.dart_tool/package_config.json

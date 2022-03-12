@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- the google_analytics_id gets auto inserted from the config file
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','G-DPDLW922EP','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPDLW922EP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1YL444CW83');
+</script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Web Audio API on various frameworks.">
+<meta name="keywords" content="rfctaudio,  rfc, taudio">
+<title>Taudio Streams (RFC) | The &tau; Project documentation.</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/site.webmanifest">
+<link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="images/favicon.ico">
+<!--<link rel="shortcut icon" href="images/favicon.ico"> -->
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="images/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="documentation-theme-jekyll" href="http://localhost:4000/feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true, // LARPOUX
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right // LARPOUX
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-10');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#tg-dark-link").click(function() {
+                $("#tg-dark-mode").toggle();
+                $("#tg-dark-icon").toggleClass('fa-toggle-on');
+                $("#tg-dark-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+
+
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+
+            <a href="/readme.html"> <img src="images/logo-transparent-circle.png" width="60%" height="60%" /> </a>
+           <!--<img class="inline" src="images/tau7.svg" alt="tau" />
+-->
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#" title="Show the left navigation bar"><i id="tg-sb-icon" class="fa fa-toggle-on" ></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://github.com/dooboolab/flutter_sound/projects/3" target="_blank" rel="noopener"  title="A better &tau;" >Roadmap</a></li>
+                
+                
+                
+                <li><a href="https://github.com/canardoux/flutter_sound/issues" target="_blank" rel="noopener"  title="" >PR</a></li>
+                
+                
+                
+                <li><a href="https://github.com/canardoux/flutter_sound" target="_blank" rel="noopener"  title="The sources on Github. Close Source Software :-(" >Repo</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/pages\flutter-sound\api\topics\Main-topic.html"   title="The API documentation generated by Dartdoc" >Flutter (dart)</a></li>
+                        
+                        
+                        
+                        <li><a href="/api-react"   title="For future expansion..." >React Native (javascript)</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sharing<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://tau-t7l7803.slack.com" target="_blank" rel="noopener"  title="Slack is not Open Source Software :-(" >Slack</a></li>
+                        
+                        
+                        
+                        <li><a href="https://app.element.io/#/room/#tau:matrix.org" target="_blank" rel="noopener"  title="Free and Open Source. Based on Open Source Protocols" >Element</a></li>
+                        
+                        
+                        
+                        <li><a href="https://discord.gg/MWNfvaTHmQ" target="_blank" rel="noopener"  title="Unfortunately not Open Source" >Discord</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:tau@canardoux.xyz?subject=The &tau; Project documentation feedback&body=I have some feedback about the Taudio Streams (RFC) page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Taudio Streams (RFC)">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+
+<!-- Page Content -->
+<!-- <div class="container"> -->
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+             
+            <!-- Sidebar Column -->
+            <div class="col-md-2" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle">Flutter Sound - 9.1.2</li>
+  
+  
+  
+      
+  
+  <li>
+      <a title="The Flutter Sound Project" href="#">The Flutter Sound Project</a>
+      <ul>
+          
+          
+          
+          <li><a title="Introduction" href="/readme.html">Introduction</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Changelog" href="/changelog.html">Changelog</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Development Setup" href="/tau_dev.html">Development Setup</a></li>
+          
+          
+          
+          
+          
+           <!-- Here -->
+          <li class="active"><a title="/Taudio RFC" href="taudio_rfc.html">Taudio RFC</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Guides" href="#">Guides</a>
+      <ul>
+          
+          
+          
+          <li><a title="Getting Started" href="/guides_getting_started.html">Getting Started</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Installation" href="/flutter_sound_install.html">Installation</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Supported Codecs" href="/guides_codec.html">Supported Codecs</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Logger" href="/logger.html">Logger</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Lite vs Full" href="/guides_lite-full.html">Lite vs Full</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Temporary files" href="/temporary_files.html">Temporary files</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Raw PCM and Wave files" href="/guides_pcm_wave.html">Raw PCM and Wave files</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Recording or playing Raw PCM" href="/guides_recording_pcm.html">Recording or playing Raw PCM</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Recording to a Dart Stream" href="/guides_record_stream.html">Recording to a Dart Stream</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Playback from a Dart Stream" href="/guides_play_stream.html">Playback from a Dart Stream</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Widgets" href="/guides_ui.html">Widgets</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Notification on the lock screen" href="/guides_lock_screen.html">Notification on the lock screen</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Flutter Sound on Web" href="/guides_web.html">Flutter Sound on Web</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="API" href="#">API</a>
+      <ul>
+          
+          
+          
+          <li><a title="The API - Overview" href="/tau_api_main.html">The API - Overview</a></li>
+          
+          
+          
+          <li class="subfolders">
+              <a title="The Player" href="#">The Player</a>
+              <ul>
+                  
+                  
+                  
+                  <li><a title="Constructor" href="/tau_api_player_constructor.html">Constructor</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setLogLevel()" href="/tau_api_player_setLogLevel.html">setLogLevel()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="openPlayer()" href="/tau_api_player_open_audio_session.html">openPlayer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="startPlayer()" href="/tau_api_player_startPlayer.html">startPlayer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="startPlayerFromMic()" href="/tau_api_player_start_player_from_mic.html">startPlayerFromMic()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="startPlayerFromStream()" href="/tau_api_player_start_player_from_stream.html">startPlayerFromStream()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="feedFromStream()" href="/tau_api_player_feed_from_stream.html">feedFromStream()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="foodSink" href="/tau_api_player_food_sink.html">foodSink</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="onProgress()" href="/tau_api_player_on_progress.html">onProgress()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="FoodData and FoodEvent" href="/tau_api_player_food.html">FoodData and FoodEvent</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="stopPlayer()" href="/tau_api_player_stop_player.html">stopPlayer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="pausePlayer()" href="/tau_api_player_pause_player.html">pausePlayer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="resumePlayer()" href="/tau_api_player_resume_player.html">resumePlayer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="seekPlayer()" href="/tau_api_player_seek_player.html">seekPlayer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setVolume()" href="/tau_api_player_set_volume.html">setVolume()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setSpeed()" href="/tau_api_player_set_speed.html">setSpeed()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="getPlayerState()" href="/tau_api_player_get_player_state.html">getPlayerState()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="isDecoderSupported()" href="/tau_api_player_is_decoder_supported.html">isDecoderSupported()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="getProgress()" href="/tau_api_player_get_progress.html">getProgress()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setSubscriptionDuration()" href="/tau_api_player_set_subscription_duration.html">setSubscriptionDuration()</a></li>
+                  
+                  
+                  
+              </ul>
+          </li>
+          
+          
+          
+          <li class="subfolders">
+              <a title="The Recorder" href="#">The Recorder</a>
+              <ul>
+                  
+                  
+                  
+                  <li><a title="Constructor" href="/tau_api_recorder_constructor.html">Constructor</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setLogLevel()" href="/tau_api_recorder_setLogLevel.html">setLogLevel()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="openRecorder()" href="/tau_api_recorder_open_audio_session.html">openRecorder()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="startRecorder()" href="/tau_api_recorder_start_recorder.html">startRecorder()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="stopRecorder()" href="/tau_api_recorder_stop_recorder.html">stopRecorder()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="pauseRecorder()" href="/tau_api_recorder_pause_recorder.html">pauseRecorder()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="resumeRecorder()" href="/tau_api_recorder_resume_recorder.html">resumeRecorder()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="recorderState()" href="/tau_api_recorder_recorder_state.html">recorderState()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="isEncoderSupported()" href="/tau_api_recorder_is_encoder_supported.html">isEncoderSupported()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="onProgress" href="/tau_api_recorder_on_progress.html">onProgress</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setSubscriptionDuration()" href="/tau_api_recorder_set_subscription_duration.html">setSubscriptionDuration()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="deleteRecord()" href="/tau_api_recorder_delete_record.html">deleteRecord()</a></li>
+                  
+                  
+                  
+              </ul>
+          </li>
+          
+          
+          
+          <li class="subfolders">
+              <a title="The utilities" href="#">The utilities</a>
+              <ul>
+                  
+                  
+                  
+                  <li><a title="Constructor" href="/tau_api_utilities_constructor.html">Constructor</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="setLogLevel()" href="/tau_api_utilities_setLogLevel.html">setLogLevel()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="pcmToWave()" href="/tau_api_utilities_pcm_to_wave.html">pcmToWave()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="pcmtoWaveBuffer()" href="/tau_api_utilities_pcm_to_wave_buffer.html">pcmtoWaveBuffer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="waveToPcm()" href="/tau_api_utilities_wave_to_pcm.html">waveToPcm()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="waveToPcmBuffer()" href="/tau_api_utilities_wave_to_pcm_buffer.html">waveToPcmBuffer()</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="duration()" href="/tau_api_utilities_duration.html">duration()</a></li>
+                  
+                  
+                  
+              </ul>
+          </li>
+          
+          
+          
+          <li class="subfolders">
+              <a title="The Widgets UI" href="#">The Widgets UI</a>
+              <ul>
+                  
+                  
+                  
+                  <li><a title="UI Player" href="/tau_api_widgets_ui_player.html">UI Player</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="UI Recorder" href="/tau_api_widgets_ui_recorder.html">UI Recorder</a></li>
+                  
+                  
+                  
+                  
+                  
+                  <li><a title="UI Controller" href="/tau_api_widgets_ui_controller.html">UI Controller</a></li>
+                  
+                  
+                  
+              </ul>
+          </li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Live Demo" href="#">Live Demo</a>
+      <ul>
+          
+          
+          
+          <li><a title="Live demo" href="https://flutter-sound.canardoux.xyz/web_example/" target="_blank" rel="noopener">Live demo</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Examples" href="#">Examples</a>
+      <ul>
+          
+          
+          
+          <li><a title="demo" href="/flutter_sound_examples_demo.html">demo</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Widget UI" href="/flutter_sound_examples_widget_ui.html">Widget UI</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Simple Playback" href="/flutter_sound_examples_simple_playback.html">Simple Playback</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="onProgress (Player)" href="/flutter_sound_examples_player_onprogress.html">onProgress (Player)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="onProgress (Recorder)" href="/flutter_sound_examples_recorder_onprogress.html">onProgress (Recorder)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Simple Recorder" href="/flutter_sound_examples_simple_recorder.html">Simple Recorder</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Play from Mic" href="/flutter_sound_examples_play_from_mic.html">Play from Mic</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Multi Playbacks" href="/flutter_sound_examples_multi_playbacks.html">Multi Playbacks</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Set Volumes" href="/flutter_sound_examples_setVolume.html">Set Volumes</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Set Speed" href="/flutter_sound_examples_setSpeed.html">Set Speed</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Seek" href="/flutter_sound_examples_seek.html">Seek</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Record to Stream" href="/flutter_sound_examples_record_to_stream.html">Record to Stream</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Playback from Stream (1)" href="/flutter_sound_examples_playback_from_stream_1.html">Playback from Stream (1)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Playback from Stream (2)" href="/flutter_sound_examples_playback_from_stream_2.html">Playback from Stream (2)</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Sound Effects" href="/flutter_sound_examples_sound_effects.html">Sound Effects</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Stream Loop" href="/flutter_sound_examples_stream_loop.html">Stream Loop</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Set Log Level" href="/flutter_sound_examples_setLogLevel.html">Set Log Level</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="API reference (dartdoc)" href="#">API reference (dartdoc)</a>
+      <ul>
+          
+          
+          
+          <li><a title="Player Class" href="/pages\flutter-sound\api\player\FlutterSoundPlayer-class.html">Player Class</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Recorder Class" href="/pages\flutter-sound\api\recorder\FlutterSoundRecorder-class.html">Recorder Class</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Utilities" href="/pages\flutter-sound\api\topics\Utilities-topic.html">Utilities</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Widgets UI" href="/pages\flutter-sound\api\topics\UI_Widgets-topic.html">Widgets UI</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Links" href="#">Links</a>
+      <ul>
+          
+          
+          
+          <li><a title="Migration" href="/links_migration.html">Migration</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Problem Report" href="https://github.com/canardoux/tau/issues" target="_blank" rel="noopener">Problem Report</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Roadmap" href="https://github.com/canardoux/tau/projects/3" target="_blank" rel="noopener">Roadmap</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Contributions" href="/links_contribution.html">Contributions</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="License" href="/links_license.html">License</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- LARPOUX
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+       -->
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+        
+
+        <!-- Content Column -->
+        <div class="col-md-10" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Taudio Streams (RFC)</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Web Audio API on various frameworks.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+
+   <h2 id="overview">Overview</h2>
+
+<p><em>Taudio Streams</em> (or simply <em>Taudio</em>), is everything about W3C <a href="https://www.w3.org/TR/webaudio/">Web Audio API</a>.
+You can look also to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Mozilla documentation</a> which is very clear and that it is a pleasure to read it.</p>
+
+<p><em>Taudio Streams</em> will implent this API under various frameworks :</p>
+
+<ul>
+  <li>Flutter</li>
+  <li>Blazor</li>
+  <li>Microsoft MAUI</li>
+  <li>React Native</li>
+  <li>…</li>
+</ul>
+
+<h2 id="motivation-for-taudio">Motivation for TAudio</h2>
+
+<h3 id="flutter-sound-is-just-a-draft">Flutter Sound is just a draft</h3>
+
+<p>Flutter Sound has several API verbs to handle Audio Streams but comes with some limitations:</p>
+
+<ul>
+  <li>It does not support Flutter Web</li>
+  <li>It does not support GNU/Linux</li>
+  <li>It runs only on Flutter Android and Flutter iOS</li>
+  <li>It supports only Raw PCM-INTEGER-16 Little Endian</li>
+  <li>It does not support Stereo</li>
+  <li>It does not support events with DB level</li>
+  <li>The code was <em>two-headed</em> (the code for Audio Streams and for Media-Players/Recorders are completely independant of each others).</li>
+  <li>The code is complicate and hard to maintain</li>
+  <li>The latency was too important on Android</li>
+</ul>
+
+<h3 id="tau-sound-was-just-a-dream">Tau Sound was just a dream</h3>
+
+<p>During many months, we had the project to implement <a href="/guides_graph.html">Audio Graphs</a> inside Flutter Sound.
+This project was called <em>TauSound</em>.</p>
+
+<p>TauSound was killed off a few weeks ago because:</p>
+
+<ul>
+  <li>The API was overly complex and hard to maintain</li>
+  <li>It added complexity inside an already complicated library.</li>
+  <li>It dawned on us that we wre re-inventing the wheel ; W3C already had functionality in place that we were trying to implement. If you look to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>, you will see that we were trying to do something that had already been perfected.</li>
+</ul>
+
+<h3 id="w3c---web-audio-api">W3C - Web Audio API</h3>
+
+<p>W3C did a fantastic job with the specification of this API.</p>
+
+<p>Furthermore, this API is already completely implemented inside a host of mainstream WEB Browsers:</p>
+
+<ul>
+  <li>Microsoft Edge</li>
+  <li>Google Chrome</li>
+  <li>Mozilla Firefox</li>
+  <li>Apple Safari</li>
+</ul>
+
+<p>It means that we do not have to develop anything new for Web support.</p>
+
+<p>Flutter Sound on Web was really a second-class citizen. Taudio on Web will be first-class citizen:
+The problems will not be on Web but on the native side (iOS, Android, GNU/Linux, …)</p>
+
+<p>W3C specified many great things like :</p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API#audio_graphs">Audio Graphs</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API#visualizations">Visualisation</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API#spatialisations">Spatialisation</a></li>
+</ul>
+
+<p>The recommandation allows anybody to build custom nodes and insert them inside their graphs.
+It would be fantastic for our users to be able to code custom nodes in Dart.</p>
+
+<h2 id="architecturedesign">Architecture/Design</h2>
+
+<p>The Taudio architecture is actually not yet fully designed.
+For information you can look to <a href="/architecture.html">The Flutter Sound Architecture</a>.</p>
+
+<p>Flutter Sound Architecture is ridiculously complicated. It was designed so that a port to other frameworks would be easy.
+Unfortunatly this complexity was not useful because Flutter Sound has never been ported anywhere other than:</p>
+
+<ul>
+  <li>Flutter iOS</li>
+  <li>Flutter Android</li>
+  <li>and a little bit Flutter web</li>
+</ul>
+
+<p>Actually it is not clear if we can have a simpler design for Taudio, without compromising portability.</p>
+
+<p>Here is a possible design, using a portable language as Rust or C++</p>
+
+<figure><img class="docimage" src="images/taudio-architecture.svg" alt="" /><figcaption>The Taudio architecture</figcaption></figure>
+
+<h2 id="roadmap">Roadmap</h2>
+
+<p>Taudio can be a very large project, which will keep us busy for several years.</p>
+
+<p>It is important to define several milestones to be able to understand where we will be during those years.</p>
+
+<h3 id="0---project-launch-mandatory">0 - Project launch (mandatory)</h3>
+
+<p>This step is not about coding, but about doing things which are required to launch the project</p>
+
+<p>We will :</p>
+
+<ul>
+  <li>Setup a Git repo</li>
+  <li>Choose a documentation tool</li>
+  <li>Setup the documentation. It can be:
+    <ul>
+      <li>Jekyll (same as Flutter Sound and compatible with dartdoc)</li>
+      <li>Notion.so (which is close source)</li>
+      <li>Hugo</li>
+      <li>Gatsby</li>
+      <li>Docusaurus</li>
+      <li>Git Book (which is close source)</li>
+      <li>… other …</li>
+    </ul>
+  </li>
+  <li>Choose a Project Management tool (if any)</li>
+  <li>Choose an Issue Tracker tool (if any)</li>
+  <li>Define an architecture</li>
+  <li>Setup all the examples from W3C and Mozilla in pure Javascript</li>
+</ul>
+
+<p>Porting the examples in Javascript is just copy and past from W3C and Mozilla.
+This is useful because :</p>
+
+<ul>
+  <li>We will get familiar with Web Audio API</li>
+  <li>We will have a regular implementation in pure Javascript of what we want to achieve with other frameworks not Javascript</li>
+</ul>
+
+<h3 id="1---taudio-streams-on-flutter-web-mandatory">1 - Taudio Streams on Flutter Web (mandatory)</h3>
+
+<p>This milestone is probably not very difficult.
+The goal is just to offer the W3C API to Flutter Web.
+We do not expect many problems : we will probably just implement the interface to call Javascript from Dart.</p>
+
+<p>The documentation will be very simple : we do not want to rewrite the Mozilla documentation which is really very good.
+Probably the documentation will only be the correspondance between Dart and Javascript.
+This documentation will be in the Dart code itself. No need to write several Markdown documentation as we did for Flutter Sound.</p>
+
+<p>In this milestone, we will code most of the W3C and Mozilla examples as Flutter Examples.</p>
+
+<h3 id="2---taudio-playerrecorder-on-flutter-optional">2 - Taudio Player/Recorder on Flutter (optional)</h3>
+
+<p>This milestone is probably very simple. Everything will be coded in Flutter with pure Dart.
+The goal is to offer a very high API for major simple graphs. For example a MP3 player.
+With this API, the developer will not have to build himself/herself his/her graphs.
+The API will be similar to Flutter Sound or Just Audio, but not identical.</p>
+
+<p>In this milestone we will port the Flutter Sound examples.</p>
+
+<p>This step will simplify the migration from Flutter Sound on Web, which is actually not very good.</p>
+
+<p>We may skip this milestone if we decide that Taudio is only a port of Web Audio API on flutter but we do not want to be a Flutter Sound replacement.
+We may also delay this mileston after #5 (after the impmentation of TaudioStreams on Flutter iOS and Flutter Android).</p>
+
+<h3 id="3---taudio-on-blazor-optional">3 - Taudio on Blazor (optional)</h3>
+
+<p>Blazor is Microsoft`s framework to build Web App with C#.
+This framework is similar to Flutter Web.
+Blazor compile to webasm.</p>
+
+<p>We do not expect more problems than with milestone #1 : the purpose of this step is to build an interface
+between C# and Javascript instead of Dart and Javascript.</p>
+
+<p>In this milestone, we will code most of the W3C and Mozilla examples as Blazor Examples.</p>
+
+<p>We may skip this milestone if we decide that we are only interested by Flutter and the knowledge of other frameworks will be to hard for us.
+We may also delay this milestone after #5 (after the impmentation of TaudioStreams on Flutter iOS and Flutter Android).</p>
+
+<h3 id="4---taudio-streams-for-flutter-ios-mandatory">4 - Taudio Streams for Flutter iOS (mandatory)</h3>
+
+<p>This milestone is much more complicate that the previous ones.
+We will have to implement the W3C API for native iOS.</p>
+
+<p>We do not think that it will be doable to implements the many dozen of the different nodes specified by the W3C.
+We will have to limit ourself to the major types of nodes.
+We are not musician, and implement an audio-compressor, for example, is probably not doable for us without borrowing the algorythm from elsewhere.</p>
+
+<p>We will document how to code custom nodes, so that musicians will be able to code the nodes types they need, as many flutter plugins.</p>
+
+<p>The implementation of this milestone can be:</p>
+
+<ul>
+  <li>Mostly coded on the Flutter side, in dart. The code in Dart will be shared between Flutter iOS and Flutter Android, but will need to be recoded for others Framework like React Native</li>
+  <li>Mostly coded on the iOS side, in Objective-C. The code in Objective-C will be shared with other frameworks , but we will have to recode onwith Java the iOS stuff.</li>
+  <li>A mix between some development in Dart, and some development in Objective-C.</li>
+  <li>Coded with a real portable language like C++ or Rust. <em>(Not sure that it is doable)</em></li>
+</ul>
+
+<p>For this milestone, we will try to find some FOSS already existing on the web that can be used.
+For example :</p>
+
+<ul>
+  <li><a href="https://pub.dev/packages/oboe">flutter_oboe</a></li>
+  <li><a href="https://github.com/RustAudio/cpal">cpal</a></li>
+  <li><a href="https://crates.io/crates/web-audio-api/0.14.0">Rust Crates</a></li>
+  <li>The code source of Chromium</li>
+  <li>The code source of Firefox</li>
+  <li>…</li>
+</ul>
+
+<h3 id="5---taudio-streams-for-flutter-android-mandatory">5 - Taudio Streams for Flutter Android (mandatory)</h3>
+
+<p>This milestone is similar to the milestone #4 and will be also difficult.</p>
+
+<p>Everything which has been coded on Objective-C will have to be recoded on Java.</p>
+
+<p>Note: our experience with Flutter Sound shows a real problem with latency.
+Perhaps <a href="https://pub.dev/packages/oboe">flutter_oboe</a> can help doing something better</p>
+
+<h3 id="6---taudio-streams-for-desktop-optional">6 - Taudio Streams for Desktop (optional)</h3>
+
+<p>A port of our library on desktops is something that we probably want. Specially on GNU/Linux.</p>
+
+<p>We can port Taudio on:</p>
+
+<ul>
+  <li>Microsoft MAUI</li>
+  <li>Flutter Desktop</li>
+  <li>Electron</li>
+  <li>…</li>
+</ul>
+
+<p>We will have to make a choice. We cannot support all the existing frameworks existing in 2022.
+We may also declare that we are not interested by using Taudio on desktops.</p>
+
+<h3 id="7---other-frameworks-optional">7 - Other frameworks (optional)</h3>
+
+<p>Many frameworks would be good candidate for Taudio:</p>
+
+<ul>
+  <li>React Native</li>
+  <li>Cordova/Capacitor</li>
+  <li>Native Script</li>
+  <li>Solar-2D</li>
+  <li>…</li>
+</ul>
+
+<p>We definitely cannot support everything. Probably we will do our choices based on oportunities.</p>
+
+<h3 id="8---a-graphic-editor-optional">8 - A graphic editor (optional)</h3>
+
+<p>My dream is to build a graphic Audio Graph with a mouse.
+We will drag and drop Audio nodes to the graph, and draw the channels between them.</p>
+
+<p>The nodes attributs will be specified by menu.</p>
+
+<p>We will have a test/pause/resume button so that the Audio Graph designer will have an audio preview of how the sound is processed.</p>
+
+<p>This milestone is probably not useful. But it will be funny to do it.</p>
+
+<p>This is milestone #8. I will probably be dead before reaching it :-( .</p>
+
+<h2 id="the-license">The license</h2>
+
+<p>The license issue is for me somthing very important that we must determine during milestone #0.</p>
+
+<p>I strongly insist to publish Taudio under The GNU GPL license.
+The GPL license has a very strong copyleft clause : nobody can borrow all or part of the project without publishing all his/her software under GPL, too.</p>
+
+<p>I cannot accept the idea to work during several years on a project badly protected by a license like MIT.</p>
+
+<p>Taudio must be free not only today, but for ever.
+MIT and even MPL are for me really bad licenses.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This project is huge. There are many things to master :</p>
+
+<ul>
+  <li>The W3C specifications</li>
+  <li>Dart</li>
+  <li>Flutter</li>
+  <li>C# (maybe)</li>
+  <li>Blazor (maybe)</li>
+  <li>Dotnet (maybe)</li>
+  <li>MAUI (maybe)</li>
+  <li>Electron (maybe)</li>
+  <li>React Native (maybe)</li>
+  <li>Rust (maybe)</li>
+</ul>
+
+<p>And of course :</p>
+
+<ul>
+  <li>Java</li>
+  <li>Objective C</li>
+  <li>C++</li>
+</ul>
+
+<p>We probably will have to kill some of the 8 milestones, however - we are yet to decide which ones.</p>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_rfc.html" class="btn btn-default navbar-btn cursorNorm" role="button">rfc</a>
+        
+        
+        
+        <a href="tag_taudio.html" class="btn btn-default navbar-btn cursorNorm" role="button">taudio</a>
+        
+        
+        
+    </div>
+
+
+<div id="commento"></div>
+<script src="https://commento.canardoux.xyz/js/commento.js"></script>
+<noscript>Please enable JavaScript to load the comments.</noscript>
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2022 Dooboolab. Licensed under LGPL. <br />
+ Site last generated: Feb 4, 2022 <br />
+<p><img src="images/logo-transparent-circle.svg" alt="Company logo" max-width="10"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+    </div>
+<!-- /.container -->
+<!--</div> -->
+<!-- /#main -->
+    </div>
+
+</body>
+<!-- 
+<!-- the google_analytics_id gets auto inserted from the config file
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','G-DPDLW922EP','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPDLW922EP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1YL444CW83');
+</script>
+ -->
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1957995835/android.audio_session.iml" filepath="$PROJECT_DIR$/.idea/modules/1957995835/android.audio_session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1585401716/android.flutter_sound.iml" filepath="$PROJECT_DIR$/.idea/modules/1585401716/android.flutter_sound.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/375000650/android.flutter_sound_core.iml" filepath="$PROJECT_DIR$/.idea/modules/375000650/android.flutter_sound_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-659375351/android.flutter_sound_web.iml" filepath="$PROJECT_DIR$/.idea/modules/-659375351/android.flutter_sound_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/967804537/android.just_audio.iml" filepath="$PROJECT_DIR$/.idea/modules/967804537/android.just_audio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/255758155/android.just_audio_web.iml" filepath="$PROJECT_DIR$/.idea/modules/255758155/android.just_audio_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2039063693/android.path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/-2039063693/android.path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-958019932/android.path_provider_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/-958019932/android.path_provider_linux.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2119929308/android.path_provider_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/-2119929308/android.path_provider_macos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1914598731/android.path_provider_windows.iml" filepath="$PROJECT_DIR$/.idea/modules/-1914598731/android.path_provider_windows.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1901375599/android.permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/-1901375599/android.permission_handler.iml" />
+    </modules>
+  </component>
+</project>
